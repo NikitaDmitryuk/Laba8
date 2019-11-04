@@ -14,7 +14,10 @@ public:
 private:
     double h;
     enum Method{
-        EULER
+        EULER,
+        MOD_EULER,
+        IMPR_EULER,
+        RUNGE_KUTTA
     };
 };
 
