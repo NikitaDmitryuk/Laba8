@@ -47,6 +47,8 @@ def main():
     ax.set_ylabel('u(x)')
     ax.grid(True)
 
+    plt.show()
+
     fig.savefig('plot.pdf')
 
 
