@@ -6,6 +6,7 @@ class Point
 {
 public:
     Point();
+    Point(double _x);
     Point(double _x, double _y);
     double getX();
     double getY();

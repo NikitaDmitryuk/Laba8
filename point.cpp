@@ -11,6 +11,11 @@ Point::Point()
 
 }
 
+Point::Point(double _x){
+    x = _x;
+    y = 0;
+}
+
 double Point::getX(){
     return x;
 }
