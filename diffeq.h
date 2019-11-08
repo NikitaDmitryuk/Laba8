@@ -19,7 +19,8 @@ private:
         EULER,
         MOD_EULER,
         IMPR_EULER,
-        RUNGE_KUTTA
+        RUNGE_KUTTA,
+        EULER_KROMER
     };
 };
 

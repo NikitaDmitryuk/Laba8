@@ -22,6 +22,9 @@ def main():
     data = np.array(loadData('ZADACHA1.txt'))
     x1 = data[:, 0]
     y1 = data[:, 1]
+    data = np.array(loadData('ZADACHA2.txt'))
+    x2 = data[:, 0]
+    y2 = data[:, 1]
 
     fig = plt.figure()
 
@@ -32,6 +35,7 @@ def main():
     
     ax.plot(x0, y0, label="точное решение")
     ax.plot(x1, y1, label="метод Эйлера")
+    ax.plot(x2, y2, label="метод Эйлера-Кромера")
     ax.legend()
 
     ax.set_title('Решенное дифференциальное уравнение x\'\' + 2*Lamda*x\' + omega0*x = 0')

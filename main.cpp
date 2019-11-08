@@ -34,6 +34,8 @@ int main(int argc, char *argv[])
     fout.close();
     fout.open("ZADACHA1.txt", ios::trunc);
     fout.close();
+    fout.open("ZADACHA2.txt", ios::trunc);
+    fout.close();
     fout.open("F0.txt", ios::trunc);
     fout.close();
 
@@ -41,10 +43,11 @@ int main(int argc, char *argv[])
         EULER,
         MOD_EULER,
         IMPR_EULER,
-        RUNGE_KUTTA
+        RUNGE_KUTTA,
+        EULER_KROMER
     };
 
-    double h = 0.1;
+    double h = 0.5;
     double T = 2 * M_PI / sqrt(0.99);
     DiffEq eq = DiffEq(h);
     vector<Point> U;
@@ -80,6 +83,13 @@ int main(int argc, char *argv[])
 
     U = eq(f2, 1, 0, 0, T, EULER);
     fout.open("ZADACHA1.txt", ios::app);
+    for(auto u : U){
+        fout << u.getX() << "\t" << u.getY() << endl;
+    }
+    fout.close();
+
+    U = eq(f2, 1, 0, 0, T, EULER_KROMER);
+    fout.open("ZADACHA2.txt", ios::app);
     for(auto u : U){
         fout << u.getX() << "\t" << u.getY() << endl;
     }

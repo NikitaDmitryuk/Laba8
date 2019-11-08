@@ -57,9 +57,16 @@ vector<Point> DiffEq::operator()(Func2 func, double ul1, double dul1, double l1,
         for(double x = l1 + h; x <= l2; x += h){
             diffOld = diff.back().getX();
             yOld = point.back().getY();
-            double f = func(yOld, diffOld);
             diff.push_back(Point(diffOld + h * func(yOld, diffOld)));
             point.push_back(Point(x, yOld + h * diffOld));
+
+        }
+        break;
+    case EULER_KROMER:
+        for(double x = l1 + h; x <= l2; x += h){
+            yOld = point.back().getY();
+            diff.push_back(Point(diff.back().getX() + h * func(yOld, diff.back().getX())));
+            point.push_back(Point(x, yOld + h * diff.back().getX()));
 
         }
         break;
