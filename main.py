@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import sys
 
 
-
 def loadData(name):
     data = []
     with open(name) as f:
@@ -29,20 +28,16 @@ def main():
     x3 = data[:, 0]
     y3 = data[:, 1]
 
-    fig = plt.figure()
+    h = sys.argv[1]
 
-    print
-    type(fig)
-    
+    fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.plot(x0, y0, label="метод Эйлера")
     ax.plot(x1, y1, label="модифицированный метод Эйлера")
     ax.plot(x2, y2, label="усовершенствованный метод Эйлера")
     ax.plot(x3, y3, label="метод Рунге-Кутта")
     ax.legend()
-
-    ax.set_title('Решенное дифференциальное уравнение u\' = 2(x^4 + u)/x')
+    ax.set_title('Решенное дифференциальное уравнение u\' = 2(x^4 + u)/x с шагом ' + h)
     ax.set_xlabel('x')
     ax.set_ylabel('u(x)')
     ax.grid(True)

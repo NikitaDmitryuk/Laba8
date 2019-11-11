@@ -26,19 +26,16 @@ def main():
     x2 = data[:, 0]
     y2 = data[:, 1]
 
-    fig = plt.figure()
+    h = sys.argv[1]
 
-    print
-    type(fig)
-    
+    fig = plt.figure()
     ax = fig.add_subplot(111)
-    
     ax.plot(x0, y0, label="точное решение")
     ax.plot(x1, y1, label="метод Эйлера")
     ax.plot(x2, y2, label="метод Эйлера-Кромера")
     ax.legend()
 
-    ax.set_title('Решенное дифференциальное уравнение x\'\' + 2*Lamda*x\' + omega0*x = 0')
+    ax.set_title('Решенное дифференциальное уравнение x\'\' + 2*Lamda*x\' + omega0*x = 0 с шагом ' + h)
     ax.set_xlabel('t')
     ax.set_ylabel('x(t)')
     ax.grid(True)

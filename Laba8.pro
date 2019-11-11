@@ -27,3 +27,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     diffeq.h \
     point.h
+
+DISTFILES += \
+    main.py \
+    zadacha.py

@@ -4,6 +4,7 @@
 #include "fstream"
 #include "point.h"
 #include "diffeq.h"
+#include <sstream>
 
 using namespace std;
 
@@ -39,6 +40,9 @@ int main(int argc, char *argv[])
     fout.open("F0.txt", ios::trunc);
     fout.close();
 
+    //cout << argv[0] << "  " << argv[1] << endl;
+
+
     enum Method{
         EULER,
         MOD_EULER,
@@ -48,6 +52,13 @@ int main(int argc, char *argv[])
     };
 
     double h = 0.5;
+    if(argv[1] != ""){
+        std::stringstream ss;
+        ss << argv[1];
+        ss >> h;
+    }
+
+    cout << "h = " << h << endl;
     double T = 2 * M_PI / sqrt(0.99);
     DiffEq eq = DiffEq(h);
     vector<Point> U;
@@ -103,7 +114,8 @@ int main(int argc, char *argv[])
 
 
 
-    string command2 = "python3 main.py";
+    string command2 = "python3 main.py ";
+    command2 += to_string(h);
     cout << command2 << endl;
     const char *com2 = command2.c_str();
     if(system(com2) == 0)
@@ -111,7 +123,8 @@ int main(int argc, char *argv[])
     else
         cout << "ОШИБКА!!!" << endl;
 
-    string command1 = "python3 zadacha.py";
+    string command1 = "python3 zadacha.py ";
+    command1 += to_string(h);
     cout << command1 << endl;
     const char *com1 = command1.c_str();
     if(system(com1) == 0)
