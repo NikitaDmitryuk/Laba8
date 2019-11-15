@@ -39,8 +39,10 @@ int main(int argc, char *argv[])
     fout.close();
     fout.open("F0.txt", ios::trunc);
     fout.close();
-
-    //cout << argv[0] << "  " << argv[1] << endl;
+    fout.open("Fdelta1.txt", ios::trunc);
+    fout.close();
+    fout.open("Fdelta2.txt", ios::trunc);
+    fout.close();
 
 
     enum Method{
@@ -92,10 +94,18 @@ int main(int argc, char *argv[])
     }
     fout.close();
 
+    // ЗАДАЧА
+
     U = eq(f2, 1, 0, 0, T, EULER);
     fout.open("ZADACHA1.txt", ios::app);
     for(auto u : U){
         fout << u.getX() << "\t" << u.getY() << endl;
+    }
+    fout.close();
+
+    fout.open("Fdelta1.txt", ios::app);
+    for(auto u : U){
+        fout << u.getX() << "\t" << fZadacha(u.getX()) - u.getY() << endl;
     }
     fout.close();
 
@@ -106,12 +116,19 @@ int main(int argc, char *argv[])
     }
     fout.close();
 
-    fout.open("F0.txt", ios::app);
+
+    fout.open("Fdelta2.txt", ios::app);
     for(auto u : U){
-        fout << u.getX() << "\t" << fZadacha(u.getX()) << endl;
+        fout << u.getX() << "\t" << fZadacha(u.getX()) - u.getY() << endl;
     }
     fout.close();
 
+
+    fout.open("F0.txt", ios::app);
+    for(double x = 0; x <= T; x += 0.0001){
+        fout << x << "\t" << fZadacha(x) << endl;
+    }
+    fout.close();
 
 
     string command2 = "python3 main.py ";
