@@ -13,7 +13,7 @@ def loadData(name):
     return data
 
 def main():
-    
+    fontsize = 16
     
     data = np.array(loadData('EULER.txt'))
     x0 = data[:, 0]
@@ -30,6 +30,7 @@ def main():
 
     h = float(sys.argv[1].replace(',', '.'))
 
+    plt.rcParams.update({'font.size': 12})
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.plot(x0, y0, label="метод Эйлера")
@@ -38,11 +39,11 @@ def main():
     ax.plot(x3, y3, label="метод Рунге-Кутта")
     ax.legend()
     ax.set_title('Решенное дифференциальное уравнение u\' = 2(x^4 + u)/x с шагом ' + str(h))
-    ax.set_xlabel('x')
-    ax.set_ylabel('u(x)')
+    ax.set_xlabel('x', fontsize=fontsize)
+    ax.set_ylabel('u(x)', fontsize=fontsize)
     ax.grid(True)
     plt.show()
-    fig.savefig('plot.pdf', bbox_inches='tight')
+    fig.savefig('plot h = ' + str(h) + '.pdf', bbox_inches='tight')
 
 
 
