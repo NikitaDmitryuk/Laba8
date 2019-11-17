@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     ofstream fout;
+    fout.open("TOCH.txt", ios::trunc);
+    fout.close();
     fout.open("EULER.txt", ios::trunc);
     fout.close();
     fout.open("MOD_EULER.txt", ios::trunc);
@@ -62,8 +64,17 @@ int main(int argc, char *argv[])
 
     cout << "h = " << h << endl;
     double T = 2 * M_PI / sqrt(0.99);
-    DiffEq eq = DiffEq(h);
     vector<Point> U;
+    DiffEq eq = DiffEq(0.0001);
+
+    U = eq(f, 2.0, 1.0, 3.0, RUNGE_KUTTA);
+    fout.open("TOCH.txt", ios::app);
+    for(auto u : U){
+        fout << u.getX() << "\t" << u.getY() << endl;
+    }
+    fout.close();
+
+    eq = DiffEq(h);
 
     U = eq(f, 2.0, 1.0, 3.0, EULER); // eq(функция, u(l1) - начальное условие в точке l1, l1, l2 - область решения)
     fout.open("EULER.txt", ios::app);

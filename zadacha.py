@@ -14,7 +14,7 @@ def loadData(name):
     return data
 
 def main():
-    fontsize = 16
+    fontsize = 14
     
     data = np.array(loadData('F0.txt'))
     x0 = data[:, 0]
@@ -34,12 +34,12 @@ def main():
 
     h = float(sys.argv[1].replace(',', '.'))
 
-    plt.rcParams.update({'font.size': 12})
+    plt.rcParams.update({'font.size': 10})
     fig = plt.figure(1)
     ax = plt.subplot(211)
-    ax.plot(x0, y0, label="точное решение")
-    ax.plot(x1, y1, label="метод Эйлера")
-    ax.plot(x2, y2, label="метод Эйлера-Кромера")
+    ax.plot(x0, y0,'-', label="точное решение")
+    ax.plot(x1, y1,'-.', label="метод Эйлера")
+    ax.plot(x2, y2,'--', label="метод Эйлера-Кромера")
     ax.legend()
     ax.set_title('Решенное дифференциальное уравнение x\'\' + 2' + r'$\lambda$' + 'x\' + ' + r'$\omega_0$' + 'x = 0 с шагом ' + str(h))
     ax.set_xlabel('t', fontsize=fontsize)
@@ -48,8 +48,8 @@ def main():
     plt.xlim(min(x1), max(x1))
 
     bx = plt.subplot(212)
-    bx.plot(x3, y3, label="погрешность метода Эйлера")
-    bx.plot(x4, y4, label="погрешность метода Эйлера-Кромера")
+    bx.plot(x3, y3,'-.', label="погрешность метода Эйлера")
+    bx.plot(x4, y4,'--', label="погрешность метода Эйлера-Кромера")
     bx.legend()
     bx.set_title('Погрешность решения дифференциального уравнения x\'\' + 2' + r'$\lambda$' + 'x\' + ' + r'$\omega_0$' + 'x = 0 с шагом ' + str(h))
     bx.set_xlabel('t', fontsize=fontsize)
